@@ -1,5 +1,8 @@
-import ToDoRow from "./toDoRow";
-function ToDoTable(props) {
+import React from "react";
+import {ToDoRow} from "./toDoRow";
+export const ToDoTable: React.FC<{
+  todos:ToDoModle[], deleteToDo:Function 
+}> = (props)=> {
   return (
     <table className="table table-hover">
       <thead>
@@ -15,12 +18,11 @@ function ToDoTable(props) {
             key={todo.rowNumber}
             deleteToDo={props.deleteToDo}
             rowNumber={todo.rowNumber}
-            Des={todo.rowDes}
-            Name={todo.rowAssig}
+            Des={todo.rowDis}
+            Name={todo.rowAssigned}
           />
         ))}
       </tbody>
     </table>
   );
 }
-export default ToDoTable;

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
-import ToDoTable from "./components/toDoTable";
-import NewToDoForm from "./components/NewToDoForm";
+import {ToDoTable} from "./components/toDoTable";
+import {NewToDoForm} from "./components/NewToDoForm";
 
-function App() {
+export const App = ()=> {
   const [showForm, setShowForm] = useState(false);
   const [todos, setTodos] = useState([
-    { rowNumber: 1, rowDes: "new todo", rowAssig: "newUser" },
-    { rowNumber: 2, rowDes: "new todo", rowAssig: "newUser" },
-    { rowNumber: 3, rowDes: "new todo", rowAssig: "newUser" },
+    { rowNumber: 1, rowDis: "new todo", rowAssigned: "newUser" },
+    { rowNumber: 2, rowDis: "new todo", rowAssigned: "newUser" },
+    { rowNumber: 3, rowDis: "new todo", rowAssigned: "newUser" },
   ]);
 
-  const newPost = (des, assignedd) => {
+  const newPost = (des:string, assignedd:string) => {
     let rowNumber = 0;
     if (todos.length > 0) {
       rowNumber = todos[todos.length - 1].rowNumber + 1;
@@ -20,12 +20,12 @@ function App() {
     }
     const newTodo = {
       rowNumber: rowNumber,
-      rowDes: des,
-      rowAssig: assignedd,
+      rowDis: des,
+      rowAssigned: assignedd,
     };
     setTodos(() => [...todos, newTodo]);
   };
-  const deleteToDo = (id) => {
+  const deleteToDo = (id:number) => {
     let filteredTodo = todos.filter((value) => {
       return value.rowNumber !== id;
     });
@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="mt-5 container">
       <div className="card">
-        <dir className="card-header">Your todo's</dir>
+        <div className="card-header">Your todo's</div>
         <div className="card-body">
           <ToDoTable todos={todos} deleteToDo={deleteToDo} />
           <button
@@ -50,4 +50,3 @@ function App() {
   );
 }
 
-export default App;
