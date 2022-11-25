@@ -12,4 +12,3 @@ rowNumber:number,
     </tr>
   );
 }
-export default ToDoRow;
